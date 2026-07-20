@@ -12,7 +12,7 @@ export default function BentoHeroSection() {
             <div className="w-full max-w-[1400px] h-full grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6">
                 
                 {/* Main Media Block (Spans 8 columns on large screens) */}
-                <div className="md:col-span-12 lg:col-span-8 relative rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 group min-h-[60vh] lg:min-h-0 lg:h-[75vh] flex flex-col justify-between p-8 md:p-12 z-10">
+                <div className="md:col-span-12 lg:col-span-8 relative rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 group min-h-[60vh] lg:min-h-0 lg:h-[75vh] flex flex-col justify-between p-6 md:p-12 z-10">
                     <video
                         src="/assets/hero-section-video.mp4"
                         autoPlay
@@ -43,7 +43,7 @@ export default function BentoHeroSection() {
                                 "Discipline is the bridge between your goals and your ultimate accomplishment."
                             </p>
                         </div>
-                        <h1 className="text-[clamp(3.5rem,8vw,7.5rem)] font-black tracking-tighter leading-[0.9] text-white uppercase drop-shadow-2xl">
+                        <h1 className="text-[clamp(2.5rem,10vw,7.5rem)] font-black tracking-tighter leading-[0.9] text-white uppercase drop-shadow-2xl">
                             Train.<br/>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-[#C8102E]">Dominate.</span>
                         </h1>
