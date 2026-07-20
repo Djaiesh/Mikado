@@ -26,7 +26,7 @@ export default function TransformationVideoSection() {
                         className="absolute inset-0 w-full h-full object-cover scale-[1.05] group-hover:scale-100 transition-transform duration-700"
                         style={{ filter: "saturate(0.7) contrast(1.1) brightness(0.85)" }}
                     >
-                        <source src="/assets/intro-video.mp4" type="video/mp4" />
+                        <source src="/assets/inner-video.mp4" type="video/mp4" />
                     </video>
 
                     {/* Overlays & Play Button */}

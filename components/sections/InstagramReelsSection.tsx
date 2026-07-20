@@ -60,40 +60,40 @@ export default function InstagramReelsSection() {
                     </a>
                 </div>
 
-                {/* Reels Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {REEL_SHORTCODES.map((shortcode, idx) => (
-                        <div
-                            key={idx}
-                            className="w-full relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 aspect-[9/16] flex items-center justify-center group"
-                        >
-                            {/* 
-                                If it's a dummy shortcode, show a placeholder UI. 
-                                Otherwise, load the Instagram embed iframe.
-                            */}
-                            {shortcode.includes("placeholder") ? (
-                                <div className="text-center p-6 flex flex-col items-center">
-                                    <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                        <InstagramIcon className="w-8 h-8 text-white/30" />
-                                    </div>
-                                    <h3 className="text-white font-semibold mb-2">Reel Placeholder {idx + 1}</h3>
-                                    <p className="text-white/40 text-sm text-center">
-                                        Open <code className="text-[#C8102E] bg-black/50 px-1 rounded">InstagramReelsSection.tsx</code> and replace <b>{shortcode}</b> with your real Instagram shortcode.
-                                    </p>
-                                </div>
-                            ) : (
+                {/* Bento Box Reels Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+                    {/* Large Featured Reel (First item) */}
+                    <div className="lg:col-span-2 relative rounded-[2.5rem] overflow-hidden bg-[#111111] border border-white/5 aspect-[9/16] lg:aspect-auto lg:h-full group">
+                        <iframe
+                            src={`https://www.instagram.com/p/${REEL_SHORTCODES[0]}/embed`}
+                            width="100%"
+                            height="100%"
+                            frameBorder="0"
+                            scrolling="no"
+                            className="absolute inset-0 w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                            style={{ border: "none", overflow: "hidden" }}
+                        />
+                    </div>
+
+                    {/* Stacked Smaller Reels (Second and Third items) */}
+                    <div className="lg:col-span-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6">
+                        {REEL_SHORTCODES.slice(1, 3).map((shortcode, idx) => (
+                            <div
+                                key={idx}
+                                className="relative rounded-[2rem] overflow-hidden bg-[#111111] border border-white/5 aspect-[9/16] group"
+                            >
                                 <iframe
                                     src={`https://www.instagram.com/p/${shortcode}/embed`}
                                     width="100%"
                                     height="100%"
                                     frameBorder="0"
                                     scrolling="no"
-                                    className="absolute inset-0 w-full h-full"
+                                    className="absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                                     style={{ border: "none", overflow: "hidden" }}
                                 />
-                            )}
-                        </div>
-                    ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
