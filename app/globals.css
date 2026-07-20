@@ -1,26 +1,237 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─────────────────────────────────────────────────────────────
+   MIKADO FITNESS STUDIO — Design Token System
+   Dark Only · Cinematic · Premium · Minimal
+   ───────────────────────────────────────────────────────────── */
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* — Colour aliases — */
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-destructive:         var(--destructive);
+
+  /* — Brand — */
+  --color-brand:               var(--brand);
+  --color-brand-hover:         var(--brand-hover);
+  --color-brand-muted:         var(--brand-muted);
+  --color-surface:             var(--surface);
+  --color-surface-raised:      var(--surface-raised);
+
+  /* — Typography — */
+  --font-sans:    var(--font-inter);
+  --font-heading: var(--font-inter);
+  --font-mono:    var(--font-geist-mono);
+
+  /* — Radius — */
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.6);
+
+  /* — Motion timing tokens — */
+  --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --duration-slower: 600ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Dark-only colour palette ─── */
+:root {
+  /* Core surfaces */
+  --background:         oklch(0.09 0 0);       /* #0A0A0A — near black, avoids OLED smear */
+  --foreground:         oklch(0.96 0 0);       /* #F4F4F4 — off-white text */
+
+  /* Cards / elevated surfaces */
+  --card:               oklch(0.13 0 0);       /* #111111 */
+  --card-foreground:    oklch(0.96 0 0);
+  --surface:            oklch(0.13 0 0);
+  --surface-raised:     oklch(0.17 0 0);       /* #1A1A1A — hover / active surfaces */
+
+  /* Popover / overlay */
+  --popover:            oklch(0.13 0 0);
+  --popover-foreground: oklch(0.96 0 0);
+
+  /* Primary = near white (text on dark) */
+  --primary:            oklch(0.96 0 0);
+  --primary-foreground: oklch(0.09 0 0);
+
+  /* Secondary = subtle dark */
+  --secondary:          oklch(0.17 0 0);
+  --secondary-foreground: oklch(0.96 0 0);
+
+  /* Muted */
+  --muted:              oklch(0.20 0 0);
+  --muted-foreground:   oklch(0.55 0 0);       /* #666 — caption / metadata text */
+
+  /* Accent = Mikado Brand Red */
+  --accent:             oklch(0.48 0.205 25);   /* #C8102E — logo red */
+  --accent-foreground:  oklch(0.96 0 0);
+
+  /* Brand red variants */
+  --brand:              oklch(0.48 0.205 25);   /* #C8102E */
+  --brand-hover:        oklch(0.43 0.205 25);   /* slightly darker on hover */
+  --brand-muted:        oklch(0.48 0.10 25);    /* desaturated red for subtle tints */
+
+  /* Borders & inputs */
+  --border:             oklch(1 0 0 / 0.08);    /* 8% white */
+  --input:              oklch(1 0 0 / 0.10);
+  --ring:               oklch(0.48 0.205 25);   /* focus ring = brand red */
+
+  /* Destructive */
+  --destructive:        oklch(0.577 0.245 27);
+
+  /* Radius base */
+  --radius: 0.5rem;
+}
+
+/* ─── Base styles ─── */
+@layer base {
+  *, *::before, *::after {
+    @apply border-border;
+  }
+
+  html {
+    @apply font-sans antialiased;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100dvh;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus ring — accessible, brand-coloured */
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Scrollbar — minimal dark */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.3 0 0);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.4 0 0);
+  }
+
+  /* Typography baseline */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  p {
+    line-height: 1.7;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Utility layer ─── */
+@layer utilities {
+  /* Brand gradient text */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, var(--brand) 0%, oklch(0.65 0.18 25) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Editorial heading scale */
+  .heading-display {
+    font-size: clamp(2.5rem, 8vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .heading-xl {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .heading-lg {
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Section rhythm */
+  .section-pad {
+    padding-block: clamp(4rem, 8vw, 8rem);
+  }
+  .section-pad-sm {
+    padding-block: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  /* Max-width content container */
+  .container-wide {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 4rem);
+  }
+  .container-narrow {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 4rem);
+  }
+
+  /* Glass surface */
+  .glass {
+    background: oklch(1 0 0 / 0.04);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all var(--duration-base) var(--ease-smooth);
+  }
+
+  /* Reduced motion — respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
