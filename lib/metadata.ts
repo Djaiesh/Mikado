@@ -30,6 +30,9 @@ export function buildMetadata({
         description: pageDescription,
         metadataBase: new URL(SITE.url),
         alternates: { canonical: pageUrl },
+        icons: {
+            icon: "/assets/logo.jpg",
+        },
         keywords: [...SITE.keywords],
         authors: [{ name: SITE.name }],
         robots: {

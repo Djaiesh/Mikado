@@ -90,10 +90,10 @@ export default function Header() {
                             priority
                             style={{
                                 width: "auto",
-                                height: "40px",
+                                height: "36px",
                                 objectFit: "contain",
                                 borderRadius: "999px",
-                                padding: "4px",
+                                padding: "2px",
                                 backgroundColor: "#000",
                             }}
                         />
