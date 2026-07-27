@@ -22,20 +22,20 @@ export default function AmbientBackground() {
         const generateParticles = () => {
             const newParticles: Particle[] = [];
             const colors = [
-                "#C8102E", // Mikado Red
-                "#C8102E", // Mikado Red (weighted more)
-                "#ffffff", // White spark
-                "#ff4d4d", // Light red
+                "#FFFFFF", // Stark white
+                "#A1A1AA", // Zinc/Space gray
+                "#71717A", // Darker gray
+                "#C8102E", // Very sparse crimson accent
             ];
 
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 100; i++) {
                 newParticles.push({
                     id: i,
                     x: Math.random() * 100, // Random starting X position (0-100vw)
                     y: Math.random() * 100, // Random starting Y position (0-100vh)
-                    size: Math.random() * 6 + 3, // Size between 3px and 9px
-                    duration: Math.random() * 15 + 10, // Float duration 10-25s
-                    delay: Math.random() * 5,
+                    size: Math.random() * 2 + 0.5, // Size between 0.5px and 2.5px
+                    duration: Math.random() * 40 + 20, // Float duration 20-60s (very slow)
+                    delay: Math.random() * 10,
                     color: colors[Math.floor(Math.random() * colors.length)],
                 });
             }

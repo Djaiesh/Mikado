@@ -63,14 +63,14 @@
 /* ─── Dark-only colour palette ─── */
 :root {
   /* Core surfaces */
-  --background:         oklch(0.09 0 0);       /* #0A0A0A — near black, avoids OLED smear */
-  --foreground:         oklch(0.96 0 0);       /* #F4F4F4 — off-white text */
+  --background:         oklch(0 0 0);          /* #000000 — pure black */
+  --foreground:         oklch(0.98 0 0);       /* #FAFAFA — sharp off-white text */
 
   /* Cards / elevated surfaces */
-  --card:               oklch(0.13 0 0);       /* #111111 */
-  --card-foreground:    oklch(0.96 0 0);
-  --surface:            oklch(0.13 0 0);
-  --surface-raised:     oklch(0.17 0 0);       /* #1A1A1A — hover / active surfaces */
+  --card:               oklch(0.1 0 0);        /* #111111 */
+  --card-foreground:    oklch(0.98 0 0);
+  --surface:            oklch(0.1 0 0);
+  --surface-raised:     oklch(0.15 0 0);       /* #1A1A1A — hover / active surfaces */
 
   /* Popover / overlay */
   --popover:            oklch(0.13 0 0);

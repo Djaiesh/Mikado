@@ -1,14 +1,16 @@
+import dynamic from "next/dynamic";
 import BentoHeroSection from "@/components/sections/BentoHeroSection";
-import BentoFeaturesSection from "@/components/sections/BentoFeaturesSection";
-import TransformationVideoSection from "@/components/sections/TransformationVideoSection";
-import InstagramReelsSection from "@/components/sections/InstagramReelsSection";
-import MembershipsSection from "@/components/sections/MembershipsSection";
-import TrainersSection from "@/components/sections/TrainersSection";
-import BmiCalculatorSection from "@/components/sections/BmiCalculator";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import FaqSection from "@/components/sections/FaqSection";
-import CtaSection from "@/components/sections/CtaSection";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+
+const BentoFeaturesSection = dynamic(() => import("@/components/sections/BentoFeaturesSection"));
+const TransformationVideoSection = dynamic(() => import("@/components/sections/TransformationVideoSection"));
+const InstagramReelsSection = dynamic(() => import("@/components/sections/InstagramReelsSection"));
+const MembershipsSection = dynamic(() => import("@/components/sections/MembershipsSection"));
+const TrainersSection = dynamic(() => import("@/components/sections/TrainersSection"));
+const BmiCalculatorSection = dynamic(() => import("@/components/sections/BmiCalculator"));
+const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"));
+const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
+const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
 
 export default function HomePage() {
   return (
@@ -17,10 +19,6 @@ export default function HomePage() {
         <BentoHeroSection />
       </ScrollReveal>
       
-      {/* 
-        BentoFeaturesSection replaces WhyChooseUs, Facilities, and Gallery
-        with a highly structured CSS grid showcase.
-      */}
       <ScrollReveal>
         <BentoFeaturesSection />
       </ScrollReveal>

@@ -60,10 +60,30 @@ export default function InstagramReelsSection() {
                     </a>
                 </div>
 
-                {/* Bento Box Reels Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+                {/* Horizontal Swipe Carousel (Mobile) */}
+                <div className="flex lg:hidden overflow-x-auto gap-4 pb-8 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 w-[calc(100%+2rem)]">
+                    {REEL_SHORTCODES.map((shortcode, idx) => (
+                        <div
+                            key={idx}
+                            className="w-[85vw] sm:w-[320px] shrink-0 relative rounded-[2rem] overflow-hidden bg-[#111111] border border-white/5 aspect-[9/16] group snap-center shadow-2xl"
+                        >
+                            <iframe
+                                src={`https://www.instagram.com/p/${shortcode}/embed`}
+                                width="100%"
+                                height="100%"
+                                frameBorder="0"
+                                scrolling="no"
+                                className="absolute inset-0 w-full h-full opacity-90 transition-opacity duration-500"
+                                style={{ border: "none", overflow: "hidden" }}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                {/* Bento Box Reels Grid (Desktop) */}
+                <div className="hidden lg:grid grid-cols-3 gap-6">
                     {/* Large Featured Reel (First item) */}
-                    <div className="lg:col-span-2 relative rounded-[2.5rem] overflow-hidden bg-[#111111] border border-white/5 aspect-[9/16] lg:aspect-auto lg:h-full group">
+                    <div className="col-span-2 relative rounded-[2.5rem] overflow-hidden bg-[#111111] border border-white/5 h-[700px] group">
                         <iframe
                             src={`https://www.instagram.com/p/${REEL_SHORTCODES[0]}/embed`}
                             width="100%"
@@ -76,7 +96,7 @@ export default function InstagramReelsSection() {
                     </div>
 
                     {/* Stacked Smaller Reels (Second and Third items) */}
-                    <div className="lg:col-span-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6">
+                    <div className="col-span-1 grid grid-cols-1 gap-6">
                         {REEL_SHORTCODES.slice(1, 3).map((shortcode, idx) => (
                             <div
                                 key={idx}
