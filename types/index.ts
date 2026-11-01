@@ -16,8 +16,8 @@ export interface PageSection {
 
 /** Nav links used in Header and Footer */
 export const NAV_LINKS: PageSection[] = [
+    { id: "home", label: "Home", href: "/" },
     { id: "about", label: "About", href: "/about" },
-    { id: "programs", label: "Programs", href: "/programs" },
     { id: "memberships", label: "Memberships", href: "/memberships" },
     { id: "trainers", label: "Trainers", href: "/trainers" },
     { id: "gallery", label: "Gallery", href: "/gallery" },
