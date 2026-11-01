@@ -1,22 +1,12 @@
-import { Inter, Geist_Mono } from "next/font/google";
+// Fallback to robust, high-performance system font stacks
+// This prevents Next.js / Vercel build failures when Google Fonts is unreachable or blocked in CI/CD.
 
-/**
- * Primary brand font — Inter
- * Used for all headings and body copy.
- * Loaded via next/font/google: zero FOUT, self-hosted on Vercel.
- */
-export const inter = Inter({
-  subsets: ["latin"],
+export const inter = {
   variable: "--font-inter",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
+  className: "font-sans",
+};
 
-/**
- * Monospace fallback — for code/BMI values etc.
- */
-export const geistMono = Geist_Mono({
-  subsets: ["latin"],
+export const geistMono = {
   variable: "--font-geist-mono",
-  display: "swap",
-});
+  className: "font-mono",
+};
