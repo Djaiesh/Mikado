@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import CleanHeroSection from "@/components/sections/CleanHeroSection";
+import BentoHeroSection from "@/components/sections/BentoHeroSection";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const BentoFeaturesSection = dynamic(() => import("@/components/sections/BentoFeaturesSection"));
@@ -15,7 +15,7 @@ const CtaSection = dynamic(() => import("@/components/sections/CtaSection"));
 export default function HomePage() {
   return (
     <main className="w-full overflow-hidden flex flex-col bg-transparent">
-      <CleanHeroSection />
+      <BentoHeroSection />
       
       <ScrollReveal>
         <BentoFeaturesSection />

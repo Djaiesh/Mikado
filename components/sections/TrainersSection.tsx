@@ -22,42 +22,42 @@ export default function TrainersSection() {
                         </h2>
                     </div>
                     <p className="text-white/60 text-lg max-w-md font-medium">
-                        Our certified trainers are here to correct your form, build your program, and keep you accountable.
+                        Our certified trainers and physiotherapist are here to correct your form, build your program, and keep you training safely.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {TRAINERS.map((trainer, idx) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {TRAINERS.map((trainer) => (
                         <div key={trainer.id} className="group flex flex-col p-6 rounded-[2rem] border border-white/10 bg-[#0A0A0A]/60 backdrop-blur-xl hover:bg-white/5 transition-colors duration-500 shadow-2xl relative overflow-hidden">
                             
                             {/* Glass reflections */}
                             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             
-                            {/* Image Placeholder with Elite Trainer image as background */}
+                            {/* Trainer Profile Image */}
                             <div className="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-black mb-6 shadow-inner">
                                 <Image
-                                    src="/assets/elite-trainer.png"
-                                    alt="Trainer"
+                                    src={trainer.image}
+                                    alt={trainer.name}
                                     fill
-                                    className="object-cover object-center opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-lighten"
-                                    style={{ filter: "grayscale(0.5) contrast(1.2)" }}
+                                    className="object-cover object-center opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-lighten"
+                                    style={{ filter: "grayscale(0.4) contrast(1.15)" }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent z-10" />
 
-                                <div className="absolute bottom-6 left-6 z-20">
-                                    <h3 className="text-2xl font-black text-white tracking-tight drop-shadow-md">{trainer.name}</h3>
-                                    <p className="text-[#C8102E] font-bold text-sm tracking-widest uppercase mt-1 drop-shadow-md">{trainer.role}</p>
+                                <div className="absolute bottom-5 left-5 right-5 z-20">
+                                    <h3 className="text-xl font-black text-white tracking-tight drop-shadow-md">{trainer.name}</h3>
+                                    <p className="text-[#C8102E] font-bold text-xs tracking-wider uppercase mt-1 drop-shadow-md leading-snug">{trainer.role}</p>
                                 </div>
                             </div>
 
                             {/* Readout */}
-                            <p className="text-white/70 text-sm leading-relaxed mb-6 font-medium">
+                            <p className="text-white/70 text-xs leading-relaxed mb-6 font-medium line-clamp-4">
                                 {trainer.bio}
                             </p>
 
-                            <div className="flex flex-wrap gap-2 mt-auto">
+                            <div className="flex flex-wrap gap-1.5 mt-auto">
                                 {trainer.specializations.slice(0, 3).map((spec, i) => (
-                                    <span key={i} className="text-[0.7rem] font-bold px-3 py-1.5 bg-white/5 text-white/80 rounded-full border border-white/10 uppercase tracking-wider backdrop-blur-md">
+                                    <span key={i} className="text-[0.65rem] font-bold px-2.5 py-1 bg-white/5 text-white/80 rounded-full border border-white/10 uppercase tracking-wider backdrop-blur-md">
                                         {spec}
                                     </span>
                                 ))}
