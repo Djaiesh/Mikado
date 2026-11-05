@@ -37,10 +37,10 @@ export default function Header() {
                         <Image
                             src="/assets/logo.jpg"
                             alt={SITE.name}
-                            width={120}
+                            width={140}
                             height={40}
                             priority
-                            className="h-full w-auto object-contain rounded-full border border-white/10 group-hover:border-[#C8102E]/60 transition-colors"
+                            className="h-[36px] w-auto object-contain rounded-full bg-white px-2.5 py-1 border border-white/20 group-hover:border-[#C8102E] transition-colors shadow-lg"
                         />
                     </Link>
                 </div>

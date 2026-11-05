@@ -3,70 +3,7 @@
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, Wifi, Dumbbell, UserCheck, Sparkles } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/site";
-import { MembershipPlan } from "@/content/memberships";
-
-// ─── The 3 plans shown on the homepage ────────────────────────────────────────
-const HOME_PLANS: MembershipPlan[] = [
-    {
-        id: "online-yearly-with-pt",
-        category: "online",
-        subcategory: "personal",
-        name: "Online Training",
-        duration: "12 Months",
-        price: 40000,
-        priceDisplay: "₹40,000",
-        perMonth: "₹3,333 / month",
-        badge: "Online · Yearly + PT",
-        featured: true,
-        features: [
-            "12 personal live sessions / month",
-            "Round-the-clock flexible timing",
-            "Custom annually adjusted program",
-            "Full year nutrition plan",
-            "WhatsApp support anytime",
-        ],
-        cta: "Train Online — All Year",
-    },
-    {
-        id: "offline-yearly",
-        category: "offline",
-        subcategory: "gym",
-        name: "Offline Training",
-        duration: "12 Months",
-        price: 10000,
-        priceDisplay: "₹10,000",
-        perMonth: "₹833 / month",
-        badge: "Offline · Yearly",
-        features: [
-            "Unlimited gym access",
-            "All equipment included",
-            "6 personal training sessions",
-            "Diet guidance & nutrition plan",
-            "Priority member benefits",
-            "Guest pass (2 / year)",
-        ],
-        cta: "Commit to the Year",
-    },
-    {
-        id: "offline-pt-monthly",
-        category: "offline",
-        subcategory: "pt",
-        name: "Personal Trainer",
-        duration: "1 Month",
-        price: 6000,
-        priceDisplay: "₹6,000",
-        perMonth: "₹6,000 / month",
-        badge: "Offline · PT Monthly",
-        features: [
-            "Includes gym membership",
-            "12 dedicated PT sessions / month",
-            "Personalised workout plan",
-            "Custom diet & nutrition guidance",
-            "WhatsApp check-in support",
-        ],
-        cta: "Book a Trainer",
-    },
-];
+import { MembershipPlan, HOME_PLANS } from "@/content/memberships";
 
 const categoryIcon = (plan: MembershipPlan) => {
     if (plan.category === "online") return <Wifi className="w-4 h-4" />;

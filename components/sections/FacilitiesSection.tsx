@@ -8,7 +8,7 @@ export default function FacilitiesSection() {
     const facilities = [
         { name: "Strength Zone", status: "Functioning", icon: <Dumbbell className="w-5 h-5" /> },
         { name: "Cardio Deck", status: "Functioning", icon: <Activity className="w-5 h-5" /> },
-        { name: "CrossFit", status: "Not Open (Coming Soon)", icon: <Waves className="w-5 h-5" />, notOpen: true },
+        { name: "CrossFit Turf & Rig", status: "Functioning", icon: <Waves className="w-5 h-5" /> },
         { name: "Steam Bath", status: "Functioning", icon: <Wind className="w-5 h-5" /> },
         { name: "Premium Lockers", status: "Functioning", icon: <Shield className="w-5 h-5" /> },
         { name: "Clean Showers", status: "Functioning", icon: <Droplets className="w-5 h-5" /> },
@@ -32,28 +32,20 @@ export default function FacilitiesSection() {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#C8102E]">You Need.</span>
                     </h2>
                     <p className="text-white/60 text-lg leading-relaxed mb-10 font-medium max-w-xl">
-                        A 7,000+ sq ft facility designed to eliminate friction from your routine. All standard zones are fully functioning and operational for your daily training.
+                        A 7,000+ sq ft facility designed to eliminate friction from your routine. All training zones including CrossFit are fully functioning and operational for your daily training.
                     </p>
                     <div className="grid grid-cols-2 gap-4">
                         {facilities.map((fac, i) => (
                             <ScrollItem key={i} delay={i * 0.05}>
-                                <div
-                                    className={`flex items-center justify-between gap-3 p-4 rounded-2xl border transition-all duration-300 ${
-                                        fac.notOpen 
-                                            ? 'border-amber-500/30 bg-amber-500/[0.04] opacity-75' 
-                                            : 'border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-white/20'
-                                    }`}
-                                >
+                                <div className="flex items-center justify-between gap-3 p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                                     <div className="flex items-center gap-3">
-                                        <div className={fac.notOpen ? 'text-amber-400' : 'text-[#C8102E]'}>
+                                        <div className="text-[#C8102E]">
                                             {fac.icon}
                                         </div>
                                         <div>
                                             <span className="text-sm font-bold text-white/90 block leading-tight">{fac.name}</span>
-                                            <span className={`text-[10px] font-semibold uppercase tracking-wider block mt-0.5 ${
-                                                fac.notOpen ? 'text-amber-400/90' : 'text-emerald-400'
-                                            }`}>
-                                                {fac.notOpen ? '● Not Open (Coming Soon)' : '● Functioning'}
+                                            <span className="text-[10px] font-semibold uppercase tracking-wider block mt-0.5 text-emerald-400">
+                                                ● Functioning
                                             </span>
                                         </div>
                                     </div>

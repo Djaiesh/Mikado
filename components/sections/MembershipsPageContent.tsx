@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { CheckCircle2, Wifi, Dumbbell, Users, UserCheck, Heart, Star } from "lucide-react";
+import { CheckCircle2, Wifi, Dumbbell, Users, UserCheck, Star } from "lucide-react";
 import { MembershipPlan, OFFLINE_PLANS, ONLINE_PLANS } from "@/content/memberships";
 import { ScrollItem } from "@/components/ui/ScrollReveal";
 
 // ─── Subcategory icon map ──────────────────────────────────────────────────────
 const SubIcon = ({ sub }: { sub?: string }) => {
     if (sub === "pt") return <UserCheck className="w-4 h-4" />;
-    if (sub === "couple") return <Heart className="w-4 h-4" />;
     if (sub === "personal") return <Star className="w-4 h-4" />;
     if (sub === "grouped") return <Users className="w-4 h-4" />;
     return <Dumbbell className="w-4 h-4" />;
@@ -16,13 +15,13 @@ const SubIcon = ({ sub }: { sub?: string }) => {
 
 // ─── Single Plan Card ──────────────────────────────────────────────────────────
 function PlanCard({ plan, accentOnline, index = 0 }: { plan: MembershipPlan; accentOnline?: boolean; index?: number }) {
-    const accent = accentOnline ? "#0ea5e9" : "#C8102E"; // sky-500 for online, red for offline
+    const accent = accentOnline ? "#0ea5e9" : "#C8102E"; // sky-500 for online, crimson for offline
     const isFeatured = !!plan.featured;
 
     return (
-        <ScrollItem delay={index * 0.06} className="h-full flex flex-col">
+        <ScrollItem delay={index * 0.05} className="h-full flex flex-col">
             <div
-                className={`flex flex-col flex-1 relative rounded-[2.5rem] p-8 transition-all duration-500 hover:-translate-y-2 ${
+                className={`flex flex-col flex-1 relative rounded-[2.5rem] p-7 transition-all duration-500 hover:-translate-y-2 ${
                     isFeatured
                         ? `border shadow-[0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-2xl bg-[#0A0A0A]/60`
                         : "bg-white/5 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl hover:bg-white/10"
@@ -40,8 +39,8 @@ function PlanCard({ plan, accentOnline, index = 0 }: { plan: MembershipPlan; acc
                 {/* Badge */}
                 {plan.badge && (
                     <div
-                        className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap text-white"
-                        style={isFeatured ? { backgroundColor: accent } : { backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}
+                        className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg whitespace-nowrap text-white"
+                        style={isFeatured ? { backgroundColor: accent } : { backgroundColor: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)" }}
                     >
                         {plan.badge}
                     </div>
@@ -54,22 +53,22 @@ function PlanCard({ plan, accentOnline, index = 0 }: { plan: MembershipPlan; acc
                         {plan.duration}
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-1">{plan.name}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-white mb-1">{plan.name}</h3>
 
-                    <div className="mb-6">
-                        <span className="text-[clamp(2rem,4vw,2.75rem)] font-black text-white tracking-tighter">
+                    <div className="mb-5">
+                        <span className="text-[clamp(1.85rem,3.5vw,2.5rem)] font-black text-white tracking-tighter">
                             {plan.priceDisplay}
                         </span>
                         {plan.perMonth && (
-                            <p className="text-white/40 text-sm mt-1 font-semibold">{plan.perMonth}</p>
+                            <p className="text-white/40 text-xs mt-1 font-semibold">{plan.perMonth}</p>
                         )}
                     </div>
 
-                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6" />
+                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-5" />
 
-                    <ul className="flex-1 space-y-3 mb-8">
+                    <ul className="flex-1 space-y-2.5 mb-7">
                         {plan.features.map((feat, idx) => (
-                            <li key={idx} className="flex items-start gap-3 text-sm text-white/70 font-medium">
+                            <li key={idx} className="flex items-start gap-2.5 text-xs md:text-sm text-white/70 font-medium">
                                 <CheckCircle2
                                     className="w-4 h-4 mt-0.5 shrink-0"
                                     style={{ color: isFeatured ? accent : "rgba(255,255,255,0.3)" }}
@@ -81,7 +80,7 @@ function PlanCard({ plan, accentOnline, index = 0 }: { plan: MembershipPlan; acc
 
                     <Link
                         href={plan.id === "offline-day-pass" ? "/contact?purpose=daypass#contact-form" : `/contact?purpose=membership&plan=${encodeURIComponent(plan.name)}#contact-form`}
-                        className="w-full text-center py-3.5 rounded-full font-bold text-sm uppercase tracking-wide transition-all duration-300 block text-white cursor-pointer"
+                        className="w-full text-center py-3.5 rounded-full font-bold text-xs uppercase tracking-wide transition-all duration-300 block text-white cursor-pointer"
                         style={
                             isFeatured
                                 ? {
@@ -112,7 +111,7 @@ function SectionLabel({ icon, label, color }: { icon: React.ReactNode; label: st
     return (
         <div className="flex items-center gap-4 mb-10">
             <div
-                className="flex items-center gap-2.5 px-4 py-2 rounded-full border font-bold tracking-widest uppercase text-sm"
+                className="flex items-center gap-2.5 px-4 py-2 rounded-full border font-bold tracking-widest uppercase text-xs md:text-sm"
                 style={{ borderColor: `${color}50`, color, backgroundColor: `${color}12` }}
             >
                 {icon}
@@ -125,12 +124,9 @@ function SectionLabel({ icon, label, color }: { icon: React.ReactNode; label: st
 
 // ─── Main exported component ───────────────────────────────────────────────────
 export default function MembershipsPageContent() {
-    // Split offline plans into gym/couple/pt groups
-    const gymPlans    = OFFLINE_PLANS.filter(p => p.subcategory === "gym");
-    const couplePlans = OFFLINE_PLANS.filter(p => p.subcategory === "couple");
-    const ptPlans     = OFFLINE_PLANS.filter(p => p.subcategory === "pt");
+    const gymPlans = OFFLINE_PLANS.filter(p => p.subcategory === "gym");
+    const ptPlans  = OFFLINE_PLANS.filter(p => p.subcategory === "pt");
 
-    // Split online plans into grouped/personal
     const groupedPlans  = ONLINE_PLANS.filter(p => p.subcategory === "grouped");
     const personalPlans = ONLINE_PLANS.filter(p => p.subcategory === "personal");
 
@@ -154,47 +150,36 @@ export default function MembershipsPageContent() {
                             </span>
                         </h2>
                         <p className="text-white/50 text-base max-w-xl mx-auto">
-                            Step into Valasaravakkam&apos;s most premium fitness space. Unlimited access, expert equipment, and real results.
+                            Step into Valasaravakkam&apos;s most premium fitness space. 7,000+ sq ft across two floors, imported equipment, CrossFit turf, and elite coaching.
                         </p>
                     </div>
 
-                    {/* Gym Access Plans */}
-                    <SectionLabel icon={<Dumbbell className="w-4 h-4" />} label="Gym Access & Day Pass" color="#C8102E" />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+                    {/* General Training & Day Pass */}
+                    <SectionLabel icon={<Dumbbell className="w-4 h-4" />} label="General Training & Day Pass" color="#C8102E" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mb-20">
                         {gymPlans.map((p, idx) => <PlanCard key={p.id} plan={p} index={idx} />)}
                     </div>
 
-                    {/* Couple Plan */}
-                    <SectionLabel icon={<Heart className="w-4 h-4" />} label="Couple Package" color="#e879a0" />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-                        {couplePlans.map((p, idx) => <PlanCard key={p.id} plan={p} index={idx} />)}
-                        {/* Explanatory callout card */}
-                        <ScrollItem delay={0.15} className="h-full">
-                            <div className="h-full rounded-[2.5rem] p-8 border border-white/5 bg-white/3 flex flex-col justify-center">
-                                <p className="text-white/60 text-sm leading-relaxed">
-                                    <span className="text-white font-semibold block mb-2">Train Together, Save Together.</span>
-                                    The couple plan gives both of you full yearly access at a discounted combined rate — ideal for partners who want to stay fit as a team.
-                                </p>
-                                <Link href="/contact#contact-form" className="mt-6 text-[#e879a0] text-sm font-semibold hover:underline underline-offset-4">
-                                    Contact us for custom couple / group plans →
-                                </Link>
-                            </div>
-                        </ScrollItem>
+                    {/* Personal Trainer Plans */}
+                    <SectionLabel icon={<UserCheck className="w-4 h-4" />} label="Personal Training (PT)" color="#f59e0b" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+                        {ptPlans.map((p, idx) => <PlanCard key={p.id} plan={p} index={idx} />)}
                     </div>
 
-                    {/* Personal Trainer Plans */}
-                    <SectionLabel icon={<UserCheck className="w-4 h-4" />} label="Personal Trainer (PT)" color="#f59e0b" />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {ptPlans.map((p, idx) => <PlanCard key={p.id} plan={p} index={idx} />)}
-                        <ScrollItem delay={0.15} className="h-full">
-                            <div className="h-full rounded-[2.5rem] p-8 border border-white/5 bg-white/3 flex flex-col justify-center">
-                                <p className="text-white/60 text-sm leading-relaxed">
-                                    <span className="text-white font-semibold block mb-2">Your Trainer. Your Schedule.</span>
-                                    PT sessions are fully customised — from workout plans to nutrition. Includes gym membership so you never need two memberships.
-                                </p>
+                    <ScrollItem delay={0.2} className="w-full mt-6">
+                        <div className="rounded-[2.5rem] p-8 border border-white/10 bg-white/[0.02] flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-md">
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Looking for a customized group or corporate package?</h4>
+                                <p className="text-white/50 text-sm">We provide tailored fitness packages for corporate teams, sports athletes, and small groups.</p>
                             </div>
-                        </ScrollItem>
-                    </div>
+                            <Link
+                                href="/contact#contact-form"
+                                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 border border-white/15 whitespace-nowrap"
+                            >
+                                Inquire With Team
+                            </Link>
+                        </div>
+                    </ScrollItem>
                 </div>
             </section>
 
@@ -216,37 +201,35 @@ export default function MembershipsPageContent() {
                             </span>
                         </h2>
                         <p className="text-white/50 text-base max-w-xl mx-auto">
-                            Round-the-clock live sessions — group or 1-on-1 — wherever you are in the world.
+                            Round-the-clock live interactive sessions with certified coaches — group classes or 1-on-1 personal training, wherever you are in the world.
                         </p>
                     </div>
 
-                    {/* Grouped Online Classes */}
-                    <SectionLabel icon={<Users className="w-4 h-4" />} label="Group Online Classes" color="#0ea5e9" />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-                        {groupedPlans.map((p, idx) => <PlanCard key={p.id} plan={p} accentOnline index={idx} />)}
-                        <ScrollItem delay={0.15} className="h-full">
-                            <div className="h-full rounded-[2.5rem] p-8 border border-white/5 bg-white/3 flex flex-col justify-center">
-                                <p className="text-white/60 text-sm leading-relaxed">
-                                    <span className="text-white font-semibold block mb-2">Batch-based · Round the clock</span>
-                                    We run multiple batch timings so you can pick what suits your schedule. Sessions include HIIT, strength training, and cardio circuits with full replay access.
-                                </p>
-                            </div>
-                        </ScrollItem>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        {/* Grouped Online */}
+                        {groupedPlans.map((p, idx) => (
+                            <PlanCard key={p.id} plan={p} accentOnline index={idx} />
+                        ))}
+                        {/* Personal Online */}
+                        {personalPlans.map((p, idx) => (
+                            <PlanCard key={p.id} plan={p} accentOnline index={idx + 1} />
+                        ))}
                     </div>
 
-                    {/* Personal Online Classes */}
-                    <SectionLabel icon={<Star className="w-4 h-4" />} label="Personal Online Classes" color="#a78bfa" />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {personalPlans.map((p, idx) => <PlanCard key={p.id} plan={p} accentOnline index={idx} />)}
-                        <ScrollItem delay={0.15} className="h-full">
-                            <div className="h-full rounded-[2.5rem] p-8 border border-white/5 bg-white/3 flex flex-col justify-center">
-                                <p className="text-white/60 text-sm leading-relaxed">
-                                    <span className="text-white font-semibold block mb-2">1-on-1 · Your Time · Your Pace</span>
-                                    Personal online sessions give you the full trainer experience remotely — tailored programs, live feedback, nutrition guidance, and progress tracking every week.
-                                </p>
+                    <ScrollItem delay={0.2} className="w-full mt-12 max-w-4xl mx-auto">
+                        <div className="rounded-[2.5rem] p-8 border border-sky-500/20 bg-sky-500/[0.03] flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-md">
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Global Access & Round-the-Clock Flexibility</h4>
+                                <p className="text-white/50 text-sm">Whether you are in Chennai, elsewhere in India, or abroad, our coaches adapt to your time zone and workout space.</p>
                             </div>
-                        </ScrollItem>
-                    </div>
+                            <Link
+                                href="/contact?purpose=membership&plan=Online%20Training#contact-form"
+                                className="px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(14,165,233,0.4)] whitespace-nowrap"
+                            >
+                                Get Started Online
+                            </Link>
+                        </div>
+                    </ScrollItem>
                 </div>
             </section>
         </div>

@@ -11,7 +11,7 @@ export const FAQS: FAQ[] = [
         category: "Getting Started",
         question: "Do you offer a free trial or day pass before joining?",
         answer:
-            "We do not offer free trials, but we offer an official 1-Day Pass for just ₹149! This gives you full, unrestricted access to both floors of modern equipment, locker rooms, and the gym facility for an entire day so you can experience the workout culture at Mikado before deciding on a membership. You can also walk in anytime for a free tour of the facility.",
+            "We do not offer free trials, but we provide an official 1-Day Pass for just ₹149! This gives you full, unrestricted access to both floors of modern equipment, CrossFit turf, locker rooms, and shower facilities for an entire day so you can experience the workout culture at Mikado before committing to a membership.",
     },
     {
         id: "timing",
@@ -25,20 +25,20 @@ export const FAQS: FAQ[] = [
         category: "Memberships",
         question: "What membership plans do you offer?",
         answer:
-            "We offer transparent offline plans: Monthly (₹2,000), Quarterly (₹5,555), Half-Yearly (₹8,888), and Yearly (₹10,000), plus our ₹149 1-Day Pass. We also provide online personal and group training programs.",
+            "We offer transparent General Training plans: Monthly (₹2,999), Quarterly (₹6,777), Half-Yearly (₹8,999), and Annual (₹12,999), along with our ₹149 1-Day Pass. We also provide dedicated 1-on-1 Personal Training packages starting at ₹12,000/month and Online Training programs (₹3,000/month for Group classes and ₹6,000/month for Personal Online).",
     },
     {
         id: "trainers",
         category: "Trainers",
         question: "Are personal trainers included in the membership?",
         answer:
-            "Floor trainers are always present to assist with form and guidance. In addition, personal training sessions are included in our Quarterly plan (1 session), Half-Yearly plan (3 sessions), and Yearly plan (6 sessions). Dedicated 1-on-1 monthly PT packages are also available.",
+            "Floor trainers and coaches are always present on the floor to guide form, equipment usage, and safety. For tailored 1-on-1 guidance, customized periodization, and continuous nutrition coaching, we offer dedicated Personal Training packages across Monthly, Quarterly, Half-Yearly, and Annual durations.",
     },
     {
         id: "pause",
         category: "Memberships",
         question: "Can I pause my membership if I travel or face an emergency?",
         answer:
-            "Yes. Speak with our desk team and we will work out a reasonable hold arrangement. Your membership is an investment in your health — we ensure you get full value from every single day.",
+            "Yes. Speak with our front desk team and we will work out a reasonable hold arrangement. Your membership is an investment in your health — we ensure you get full value from every single day.",
     },
 ];

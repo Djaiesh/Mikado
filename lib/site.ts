@@ -12,7 +12,8 @@ export const SITE = {
     locale: "en_IN",
 
     // Contact
-    phone: "+918778995439",
+    phone: "+919003105003",
+    secondaryPhone: "+919840280103",
     whatsapp: {
         number: "918778995439",
         defaultMessage:
@@ -22,13 +23,14 @@ export const SITE = {
 
     // Location
     address: {
-        line1: "Near Shivan Kovil",
+        line1: "140, Kamarajar Street, Indira Nagar",
+        landmark: "Near Shivan Kovil",
         area: "Valasaravakkam",
         city: "Chennai",
         state: "Tamil Nadu",
         pincode: "600087",
         country: "India",
-        full: "Near Shivan Kovil, Valasaravakkam, Chennai - 600 087",
+        full: "140, Kamarajar Street, Indira Nagar, Valasaravakkam, Chennai - 600 087",
     },
 
     // Hours

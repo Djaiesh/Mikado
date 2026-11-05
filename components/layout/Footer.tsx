@@ -36,7 +36,7 @@ export default function Footer() {
                                         alt={SITE.name}
                                         width={160}
                                         height={52}
-                                        className="w-36 h-auto object-contain rounded-2xl bg-black p-2 border border-white/15 hover:border-[#C8102E] transition-all duration-300 shadow-xl"
+                                        className="w-36 h-auto object-contain rounded-2xl bg-white px-3 py-1.5 border border-white/20 hover:border-[#C8102E] transition-all duration-300 shadow-xl"
                                     />
                                 </Link>
                                 <div>
@@ -193,13 +193,19 @@ export default function Footer() {
 
                 </div>
 
-                {/* Bottom Bar: Copyright, Tags, Social */}
-                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10 text-xs text-white/50">
+                {/* Bottom Bar: Copyright, Freelance_Xpress attribution, Social */}
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10 text-xs text-white/50 text-center sm:text-left">
                     <p>© {currentYear} {SITE.name}. All rights reserved.</p>
 
-                    <p className="text-white/40 hidden md:block">
-                        Certified Physiotherapist & Coaching · Two-Floor Training Facility
-                    </p>
+                    <a
+                        href="https://www.instagram.com/freelancexpress_?vrfl=NWM4NmN5czl4ODM="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-white transition-colors"
+                    >
+                        <span>Think it. Build it. Experience it with</span>
+                        <span className="text-white/85 group-hover:text-[#C8102E] font-semibold transition-colors underline underline-offset-4 decoration-white/20 group-hover:decoration-[#C8102E]">Freelance_Xpress</span>
+                    </a>
 
                     <a
                         href={SITE.social.instagram}

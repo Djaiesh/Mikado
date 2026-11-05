@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { TRAINERS } from "@/content/trainers";
 import { ScrollItem } from "@/components/ui/ScrollReveal";
+import { Crown } from "lucide-react";
 
 export default function TrainersSection() {
     return (
@@ -15,7 +16,7 @@ export default function TrainersSection() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[0.75rem] font-bold tracking-widest uppercase text-[#C8102E] mb-6">
-                            Our Experts
+                            Our Coaching Team
                         </span>
                         <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-extrabold tracking-tighter text-white leading-none">
                             Guided by <br />
@@ -23,50 +24,70 @@ export default function TrainersSection() {
                         </h2>
                     </div>
                     <p className="text-white/60 text-lg max-w-md font-medium">
-                        Our certified trainers and physiotherapist are here to correct your form, build your program, and keep you training safely.
+                        Meet our 5 certified coaches and physiotherapist led by Head Coach Lokesh. Form correction, personalized programs, and safe athletic progression.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {TRAINERS.map((trainer, i) => (
-                        <ScrollItem key={trainer.id} delay={i * 0.08} className="h-full">
-                            <div className="group flex flex-col h-full p-6 rounded-[2rem] border border-white/10 bg-[#0A0A0A]/60 backdrop-blur-xl hover:bg-white/5 transition-colors duration-500 shadow-2xl relative overflow-hidden">
-                                
-                                {/* Glass reflections */}
-                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                
-                                {/* Trainer Profile Image */}
-                                <div className="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-black mb-6 shadow-inner">
-                                    <Image
-                                        src={trainer.image}
-                                        alt={trainer.name}
-                                        fill
-                                        className="object-cover object-center opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-lighten"
-                                        style={{ filter: "grayscale(0.4) contrast(1.15)" }}
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent z-10" />
+                {/* 5 Coaches Responsive Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                    {TRAINERS.map((trainer, i) => {
+                        const isHeadCoach = trainer.id === "lokesh";
+                        return (
+                            <ScrollItem key={trainer.id} delay={i * 0.08} className="h-full">
+                                <div className={`group flex flex-col h-full p-5 rounded-[2rem] border bg-[#0A0A0A]/60 backdrop-blur-xl transition-all duration-500 shadow-2xl relative overflow-hidden ${
+                                    isHeadCoach 
+                                        ? "border-[#C8102E]/60 hover:border-[#C8102E] shadow-[0_10px_35px_rgba(200,16,46,0.2)]" 
+                                        : "border-white/10 hover:bg-white/5 hover:border-white/25"
+                                }`}>
+                                    
+                                    {/* Glass reflection */}
+                                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    
+                                    {/* Trainer Profile Image (Exact 4:5 aspect ratio) */}
+                                    <div className="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-black mb-5 shadow-inner">
+                                        <Image
+                                            src={trainer.image}
+                                            alt={trainer.name}
+                                            fill
+                                            className="object-cover object-center opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                        />
+                                        
+                                        {/* Head Coach Badge */}
+                                        {isHeadCoach && (
+                                            <div className="absolute top-3 left-3 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-black text-[10px] font-black uppercase tracking-wider shadow-lg">
+                                                <Crown className="w-3 h-3 fill-black" />
+                                                Head Coach
+                                            </div>
+                                        )}
 
-                                    <div className="absolute bottom-5 left-5 right-5 z-20">
-                                        <h3 className="text-xl font-black text-white tracking-tight drop-shadow-md">{trainer.name}</h3>
-                                        <p className="text-[#C8102E] font-bold text-xs tracking-wider uppercase mt-1 drop-shadow-md leading-snug">{trainer.role}</p>
+                                        {/* Bottom vignette for label legibility */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+
+                                        <div className="absolute bottom-4 left-4 right-4 z-20">
+                                            <h3 className="text-lg font-black text-white tracking-tight drop-shadow-md">{trainer.name}</h3>
+                                            <p className="text-[#C8102E] font-bold text-[11px] tracking-wider uppercase mt-0.5 drop-shadow-md leading-tight">
+                                                {trainer.role}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Bio */}
+                                    <p className="text-white/70 text-xs leading-relaxed mb-5 font-medium line-clamp-3">
+                                        {trainer.bio}
+                                    </p>
+
+                                    {/* Specialization Tags */}
+                                    <div className="flex flex-wrap gap-1 mt-auto">
+                                        {trainer.specializations.slice(0, 3).map((spec, sIdx) => (
+                                            <span key={sIdx} className="text-[0.62rem] font-bold px-2 py-0.5 bg-white/5 text-white/80 rounded-full border border-white/10 uppercase tracking-wider backdrop-blur-md">
+                                                {spec}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
-
-                                {/* Readout */}
-                                <p className="text-white/70 text-xs leading-relaxed mb-6 font-medium line-clamp-4">
-                                    {trainer.bio}
-                                </p>
-
-                                <div className="flex flex-wrap gap-1.5 mt-auto">
-                                    {trainer.specializations.slice(0, 3).map((spec, sIdx) => (
-                                        <span key={sIdx} className="text-[0.65rem] font-bold px-2.5 py-1 bg-white/5 text-white/80 rounded-full border border-white/10 uppercase tracking-wider backdrop-blur-md">
-                                            {spec}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </ScrollItem>
-                    ))}
+                            </ScrollItem>
+                        );
+                    })}
                 </div>
 
             </div>
