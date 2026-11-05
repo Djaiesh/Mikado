@@ -99,13 +99,21 @@ export default function MembershipsSection() {
                         <p className="text-white/60 text-base max-w-sm">
                             Transparent plans designed for real long-term value.
                         </p>
-                        <Link
-                            href="/memberships"
-                            className="inline-flex items-center gap-2 text-sm font-bold text-[#C8102E] hover:text-white transition-colors group"
-                        >
-                            <span>Explore All Plans</span>
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        <div className="flex items-center gap-4">
+                            <Link
+                                href="/contact?purpose=daypass#contact-form"
+                                className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-[#C8102E]/20 hover:bg-[#C8102E] border border-[#C8102E]/40 px-3.5 py-1.5 rounded-full transition-all duration-300"
+                            >
+                                ⚡ 1-Day Pass @ ₹149
+                            </Link>
+                            <Link
+                                href="/memberships"
+                                className="inline-flex items-center gap-2 text-sm font-bold text-[#C8102E] hover:text-white transition-colors group"
+                            >
+                                <span>Explore All Plans</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
@@ -148,14 +156,12 @@ export default function MembershipsSection() {
                                 ))}
                             </ul>
 
-                            <a
-                                href={getWhatsAppUrl(`Hi, I'm interested in the ${HOME_PLANS[0].name} (${HOME_PLANS[0].badge}) plan.`)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full text-center py-4 rounded-full font-bold text-sm uppercase tracking-wider bg-[#C8102E] hover:bg-[#a50d25] text-white shadow-[0_0_30px_rgba(200,16,46,0.6)] hover:shadow-[0_0_40px_rgba(200,16,46,0.9)] transition-all duration-300 block"
+                            <Link
+                                href={`/contact?purpose=membership&plan=${encodeURIComponent(HOME_PLANS[0].name)}#contact-form`}
+                                className="w-full text-center py-4 rounded-full font-bold text-sm uppercase tracking-wider bg-[#C8102E] hover:bg-[#a50d25] text-white shadow-[0_0_30px_rgba(200,16,46,0.6)] hover:shadow-[0_0_40px_rgba(200,16,46,0.9)] transition-all duration-300 block cursor-pointer"
                             >
                                 {HOME_PLANS[0].cta}
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -200,14 +206,12 @@ export default function MembershipsSection() {
                                         ))}
                                     </ul>
 
-                                    <a
-                                        href={getWhatsAppUrl(`Hi, I'm interested in the ${plan.name} (${plan.badge}) plan.`)}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full text-center py-3.5 rounded-full font-bold text-xs uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-all duration-300 block hover:border-[#C8102E]/60"
+                                    <Link
+                                        href={`/contact?purpose=membership&plan=${encodeURIComponent(plan.name)}#contact-form`}
+                                        className="w-full text-center py-3.5 rounded-full font-bold text-xs uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-all duration-300 block hover:border-[#C8102E]/60 cursor-pointer"
                                     >
                                         {plan.cta}
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         ))}

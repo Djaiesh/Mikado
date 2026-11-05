@@ -2,9 +2,10 @@
 
 import { SITE } from "@/lib/site";
 import Image from "next/image";
+import { ScrollItem } from "@/components/ui/ScrollReveal";
 
 export default function GallerySection() {
-    // Simulating 6 placeholder gallery slots
+    // 6 gallery slots
     const placeholders = [1, 2, 3, 4, 5, 6];
 
     return (
@@ -46,8 +47,7 @@ export default function GallerySection() {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
-                    {placeholders.map((i) => {
-                        // Assigning generated images to placeholders
+                    {placeholders.map((i, idx) => {
                         let bgImage = "/assets/logo.jpg";
                         let invert = true;
                         
@@ -58,24 +58,25 @@ export default function GallerySection() {
                         else if (i === 3) { bgImage = "/assets/elite-trainer.png"; invert = false; }
 
                         return (
-                            <div
-                                key={i}
-                                className={`relative overflow-hidden bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2rem] group shadow-2xl hover:shadow-[0_20px_50px_rgba(200,16,46,0.3)] transition-all duration-500 hover:-translate-y-2 ${i === 1 || i === 4 ? "aspect-square md:aspect-[4/5]" : "aspect-square"}`}
-                            >
-                                {/* Inner Glass Glow */}
-                                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-                                <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-[#C8102E]/30 rounded-full blur-[40px] group-hover:bg-[#C8102E]/50 transition-colors duration-500 pointer-events-none z-10" />
+                            <ScrollItem key={i} delay={idx * 0.07}>
+                                <div
+                                    className={`relative overflow-hidden bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2rem] group shadow-2xl hover:shadow-[0_20px_50px_rgba(200,16,46,0.3)] transition-all duration-500 hover:-translate-y-2 ${i === 1 || i === 4 ? "aspect-square md:aspect-[4/5]" : "aspect-square"}`}
+                                >
+                                    {/* Inner Glass Glow */}
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                                    <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-[#C8102E]/30 rounded-full blur-[40px] group-hover:bg-[#C8102E]/50 transition-colors duration-500 pointer-events-none z-10" />
 
-                                <div className="absolute inset-0 transition-all duration-700 group-hover:scale-105">
-                                    <Image 
-                                        src={bgImage} 
-                                        alt={`Gallery Image ${i}`} 
-                                        fill 
-                                        className={`object-cover ${invert ? 'p-12 opacity-20 filter invert object-contain' : 'opacity-60 mix-blend-lighten'}`} 
-                                    />
-                                    {!invert && <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/80 to-transparent" />}
+                                    <div className="absolute inset-0 transition-all duration-700 group-hover:scale-105">
+                                        <Image 
+                                            src={bgImage} 
+                                            alt={`Gallery Image ${i}`} 
+                                            fill 
+                                            className={`object-cover ${invert ? 'p-12 opacity-20 filter invert object-contain' : 'opacity-60 mix-blend-lighten'}`} 
+                                        />
+                                        {!invert && <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/80 to-transparent" />}
+                                    </div>
                                 </div>
-                            </div>
+                            </ScrollItem>
                         );
                     })}
                 </div>

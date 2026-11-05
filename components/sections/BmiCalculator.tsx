@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Calculator } from "lucide-react";
-import { getWhatsAppUrl } from "@/lib/site";
+import { ArrowRight, Calculator, Sparkles } from "lucide-react";
 import Image from "next/image";
+import AssessmentModal from "@/components/modals/AssessmentModal";
 
 export default function BmiCalculatorSection() {
     const [params, setParams] = useState({ weight: "", height: "" });
     const [result, setResult] = useState<{ value: number; category: string; color: string } | null>(null);
+    const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
 
     const calculate = (e: React.FormEvent) => {
         e.preventDefault();
@@ -46,18 +47,23 @@ export default function BmiCalculatorSection() {
                         Know Your <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#C8102E]">Baseline.</span>
                     </h2>
-                    <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-md font-medium">
+                    <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-md font-medium">
                         Body Mass Index (BMI) is a starting point to understand your body composition. Calculate yours instantly to see where you stand.
                     </p>
 
-                    <a
-                        href={getWhatsAppUrl("Hi, I want a detailed fitness assessment.")}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-2 text-white bg-[#C8102E]/20 border border-[#C8102E]/30 px-6 py-3 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-[#C8102E] transition-all duration-300 backdrop-blur-md"
+                    {/* Trigger Button: Opens Modal */}
+                    <button
+                        type="button"
+                        onClick={() => setIsAssessmentOpen(true)}
+                        className="group inline-flex items-center gap-3 text-white bg-[#C8102E] hover:bg-[#a50d25] border border-[#C8102E]/50 px-7 py-3.5 rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-300 shadow-[0_10px_30px_rgba(200,16,46,0.35)] hover:scale-105 cursor-pointer"
                     >
-                        Get a Full Assessment <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                    </a>
+                        <span>GET A FULL ASSESSMENT</span>
+                        <span className="text-[11px] font-bold bg-white text-black px-2 py-0.5 rounded-full">₹199</span>
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </button>
+                    <p className="text-xs text-white/40 mt-3">
+                        In-person evaluation by our certified Physiotherapist & Head Coach.
+                    </p>
                 </div>
 
                 {/* Right: Calculator Form (Heavy Glass) */}
@@ -97,7 +103,7 @@ export default function BmiCalculatorSection() {
 
                         <button
                             type="submit"
-                            className="w-full py-4 rounded-2xl bg-white text-black font-extrabold uppercase tracking-widest hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl mt-2"
+                            className="w-full py-4 rounded-2xl bg-white text-black font-extrabold uppercase tracking-widest hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl mt-2 cursor-pointer"
                         >
                             Calculate BMI
                         </button>
@@ -121,6 +127,12 @@ export default function BmiCalculatorSection() {
                     </form>
                 </div>
             </div>
+
+            {/* Assessment Pop-up Modal */}
+            <AssessmentModal
+                isOpen={isAssessmentOpen}
+                onClose={() => setIsAssessmentOpen(false)}
+            />
         </section>
     );
 }

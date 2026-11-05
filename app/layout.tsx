@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} dark h-full`}
+      className={`${inter.variable} ${geistMono.variable} dark scroll-smooth`}
       suppressHydrationWarning
     >
       <head>

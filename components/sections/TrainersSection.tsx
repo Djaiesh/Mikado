@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { TRAINERS } from "@/content/trainers";
+import { ScrollItem } from "@/components/ui/ScrollReveal";
 
 export default function TrainersSection() {
     return (
@@ -27,42 +28,44 @@ export default function TrainersSection() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {TRAINERS.map((trainer) => (
-                        <div key={trainer.id} className="group flex flex-col p-6 rounded-[2rem] border border-white/10 bg-[#0A0A0A]/60 backdrop-blur-xl hover:bg-white/5 transition-colors duration-500 shadow-2xl relative overflow-hidden">
-                            
-                            {/* Glass reflections */}
-                            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            
-                            {/* Trainer Profile Image */}
-                            <div className="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-black mb-6 shadow-inner">
-                                <Image
-                                    src={trainer.image}
-                                    alt={trainer.name}
-                                    fill
-                                    className="object-cover object-center opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-lighten"
-                                    style={{ filter: "grayscale(0.4) contrast(1.15)" }}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent z-10" />
+                    {TRAINERS.map((trainer, i) => (
+                        <ScrollItem key={trainer.id} delay={i * 0.08} className="h-full">
+                            <div className="group flex flex-col h-full p-6 rounded-[2rem] border border-white/10 bg-[#0A0A0A]/60 backdrop-blur-xl hover:bg-white/5 transition-colors duration-500 shadow-2xl relative overflow-hidden">
+                                
+                                {/* Glass reflections */}
+                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                
+                                {/* Trainer Profile Image */}
+                                <div className="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-black mb-6 shadow-inner">
+                                    <Image
+                                        src={trainer.image}
+                                        alt={trainer.name}
+                                        fill
+                                        className="object-cover object-center opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-lighten"
+                                        style={{ filter: "grayscale(0.4) contrast(1.15)" }}
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent z-10" />
 
-                                <div className="absolute bottom-5 left-5 right-5 z-20">
-                                    <h3 className="text-xl font-black text-white tracking-tight drop-shadow-md">{trainer.name}</h3>
-                                    <p className="text-[#C8102E] font-bold text-xs tracking-wider uppercase mt-1 drop-shadow-md leading-snug">{trainer.role}</p>
+                                    <div className="absolute bottom-5 left-5 right-5 z-20">
+                                        <h3 className="text-xl font-black text-white tracking-tight drop-shadow-md">{trainer.name}</h3>
+                                        <p className="text-[#C8102E] font-bold text-xs tracking-wider uppercase mt-1 drop-shadow-md leading-snug">{trainer.role}</p>
+                                    </div>
+                                </div>
+
+                                {/* Readout */}
+                                <p className="text-white/70 text-xs leading-relaxed mb-6 font-medium line-clamp-4">
+                                    {trainer.bio}
+                                </p>
+
+                                <div className="flex flex-wrap gap-1.5 mt-auto">
+                                    {trainer.specializations.slice(0, 3).map((spec, sIdx) => (
+                                        <span key={sIdx} className="text-[0.65rem] font-bold px-2.5 py-1 bg-white/5 text-white/80 rounded-full border border-white/10 uppercase tracking-wider backdrop-blur-md">
+                                            {spec}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
-
-                            {/* Readout */}
-                            <p className="text-white/70 text-xs leading-relaxed mb-6 font-medium line-clamp-4">
-                                {trainer.bio}
-                            </p>
-
-                            <div className="flex flex-wrap gap-1.5 mt-auto">
-                                {trainer.specializations.slice(0, 3).map((spec, i) => (
-                                    <span key={i} className="text-[0.65rem] font-bold px-2.5 py-1 bg-white/5 text-white/80 rounded-full border border-white/10 uppercase tracking-wider backdrop-blur-md">
-                                        {spec}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
+                        </ScrollItem>
                     ))}
                 </div>
 

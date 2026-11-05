@@ -4,16 +4,17 @@ import PageHeader from "@/components/layout/PageHeader";
 import MembershipsPageContent from "@/components/sections/MembershipsPageContent";
 import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = buildMetadata({
     title: "Memberships",
-    description: "Online & Offline training plans — group classes, personal training, gym access, couple plans and more. Transparent, zero-hidden-fee pricing.",
+    description: "Online & Offline training plans — 1-day pass for ₹149, group classes, personal training, gym access, couple plans. Transparent pricing.",
     path: "/memberships",
 });
 
 export default function MembershipsPage() {
     return (
-        <main className="w-full overflow-hidden flex flex-col">
+        <main className="w-full overflow-x-clip flex flex-col">
             <PageHeader
                 title="Train Your Way."
                 description="Online or offline, group or 1-on-1 — find the plan that fits your life and goals."
@@ -39,9 +40,17 @@ export default function MembershipsPage() {
                 </div>
             </div>
 
-            <MembershipsPageContent />
-            <FaqSection />
-            <CtaSection />
+            <ScrollReveal>
+                <MembershipsPageContent />
+            </ScrollReveal>
+
+            <ScrollReveal>
+                <FaqSection />
+            </ScrollReveal>
+
+            <ScrollReveal>
+                <CtaSection />
+            </ScrollReveal>
         </main>
     );
 }

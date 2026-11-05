@@ -3,6 +3,7 @@
 import { Star, Quote } from "lucide-react";
 import Image from "next/image";
 import { TESTIMONIALS } from "@/content/testimonials";
+import { ScrollItem } from "@/components/ui/ScrollReveal";
 
 export default function TestimonialsSection() {
     return (
@@ -33,35 +34,38 @@ export default function TestimonialsSection() {
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {TESTIMONIALS.map((t) => (
-                        <div
-                            key={t.id}
-                            className="p-8 rounded-[2rem] bg-white/5 border border-white/10 relative group hover:-translate-y-2 hover:bg-white/10 transition-all duration-500 backdrop-blur-2xl shadow-2xl overflow-hidden"
-                        >
-                            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            
-                            <Quote className="absolute top-8 right-8 w-10 h-10 text-white/10 opacity-50 rotate-12 group-hover:opacity-100 group-hover:rotate-0 group-hover:text-[#C8102E]/40 transition-all duration-500" />
+                    {TESTIMONIALS.map((t, idx) => (
+                        <ScrollItem key={t.id} delay={idx * 0.08} className="h-full">
+                            <div
+                                className="h-full p-8 rounded-[2rem] bg-white/5 border border-white/10 relative group hover:-translate-y-2 hover:bg-white/10 transition-all duration-500 backdrop-blur-2xl shadow-2xl overflow-hidden flex flex-col justify-between"
+                            >
+                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                
+                                <Quote className="absolute top-8 right-8 w-10 h-10 text-white/10 opacity-50 rotate-12 group-hover:opacity-100 group-hover:rotate-0 group-hover:text-[#C8102E]/40 transition-all duration-500" />
 
-                            <div className="flex gap-1 mb-6">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className={`w-5 h-5 ${i < t.rating ? "text-yellow-500 fill-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.5)]" : "text-white/20"}`} />
-                                ))}
-                            </div>
-
-                            <p className="text-white/80 leading-relaxed mb-10 text-lg font-medium min-h-[120px] relative z-10">
-                                "{t.text}"
-                            </p>
-
-                            <div className="flex items-center gap-4 relative z-10">
-                                <div className="w-12 h-12 rounded-full bg-[#C8102E]/20 flex items-center justify-center font-black text-white text-lg border border-[#C8102E]/40 shadow-inner">
-                                    {t.name.charAt(0)}
-                                </div>
                                 <div>
-                                    <p className="text-white font-bold tracking-tight text-md">{t.name}</p>
-                                    <p className="text-white/50 text-[0.7rem] tracking-widest uppercase font-bold mt-0.5">{t.role}</p>
+                                    <div className="flex gap-1 mb-6">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} className={`w-5 h-5 ${i < t.rating ? "text-yellow-500 fill-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.5)]" : "text-white/20"}`} />
+                                        ))}
+                                    </div>
+
+                                    <p className="text-white/80 leading-relaxed mb-10 text-lg font-medium min-h-[100px] relative z-10">
+                                        "{t.text}"
+                                    </p>
+                                </div>
+
+                                <div className="flex items-center gap-4 relative z-10">
+                                    <div className="w-12 h-12 rounded-full bg-[#C8102E]/20 flex items-center justify-center font-black text-white text-lg border border-[#C8102E]/40 shadow-inner">
+                                        {t.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <p className="text-white font-bold tracking-tight text-md">{t.name}</p>
+                                        <p className="text-white/50 text-[0.7rem] tracking-widest uppercase font-bold mt-0.5">{t.role}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </ScrollItem>
                     ))}
                 </div>
             </div>

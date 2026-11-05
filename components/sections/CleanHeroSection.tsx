@@ -98,15 +98,13 @@ export default function CleanHeroSection() {
                         transition={{ duration: 0.7, delay: 0.3 }}
                         className="flex flex-wrap items-center gap-4"
                     >
-                        <a
-                            href={whatsappUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#C8102E] hover:bg-[#a50d25] text-white font-bold text-sm md:text-base uppercase tracking-wider transition-all duration-300 shadow-[0_10px_30px_rgba(200,16,46,0.35)] hover:scale-105"
+                        <Link
+                            href="/contact#contact-form"
+                            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#C8102E] hover:bg-[#a50d25] text-white font-bold text-sm md:text-base uppercase tracking-wider transition-all duration-300 shadow-[0_10px_30px_rgba(200,16,46,0.35)] hover:scale-105 cursor-pointer"
                         >
                             Get Started
                             <ArrowRight className="w-4 h-4" />
-                        </a>
+                        </Link>
 
                         <Link
                             href="/gallery"

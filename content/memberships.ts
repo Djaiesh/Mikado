@@ -16,7 +16,26 @@ export interface MembershipPlan {
 }
 
 export const MEMBERSHIPS: MembershipPlan[] = [
-    // ── OFFLINE – Gym Access ──────────────────────────────────────────────────
+    // ── OFFLINE – Day Pass & Gym Access ───────────────────────────────────────
+    {
+        id: "offline-day-pass",
+        category: "offline",
+        subcategory: "gym",
+        name: "1-Day Pass",
+        duration: "1 Day Access",
+        price: 149,
+        priceDisplay: "₹149",
+        perMonth: "Single Day Pass",
+        badge: "Trial Pass",
+        features: [
+            "Full 1-day gym access",
+            "Both floors & all equipment",
+            "Locker room & amenities",
+            "Experience the gym culture",
+            "Pay at desk (UPI / Cash)",
+        ],
+        cta: "Get 1-Day Pass",
+    },
     {
         id: "offline-monthly",
         category: "offline",
@@ -243,7 +262,7 @@ export const ONLINE_PLANS  = MEMBERSHIPS.filter(p => p.category === "online");
 
 // ── Home page highlight (3 cards + explore CTA) ───────────────────────────────
 export const HOME_PLANS = [
-    MEMBERSHIPS.find(p => p.id === "online-yearly-with-pt")   // inline below
+    MEMBERSHIPS.find(p => p.id === "online-yearly-with-pt")
      ?? {
         id: "online-yearly-with-pt",
         category: "online" as const,

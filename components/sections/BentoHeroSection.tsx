@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { getWhatsAppUrl } from "@/lib/site";
+import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { useRef } from "react";
 
@@ -73,17 +73,15 @@ export default function BentoHeroSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", damping: 20, stiffness: 100, delay: 1 }}
                 >
-                    <a 
-                        href={getWhatsAppUrl()} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="group relative overflow-hidden inline-flex items-center gap-4 px-8 py-4 md:px-10 md:py-5 rounded-full bg-white text-black font-bold text-sm md:text-lg uppercase tracking-widest transition-transform hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+                    <Link 
+                        href="/contact#contact-form" 
+                        className="group relative overflow-hidden inline-flex items-center gap-4 px-8 py-4 md:px-10 md:py-5 rounded-full bg-white text-black font-bold text-sm md:text-lg uppercase tracking-widest transition-transform hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.2)] cursor-pointer"
                     >
                         <span className="relative z-10">Start Your Journey</span>
                         <div className="w-8 h-8 md:w-10 md:h-10 bg-black text-white rounded-full flex items-center justify-center group-hover:translate-x-2 transition-transform duration-300 relative z-10">
                             <ArrowRight size={18} />
                         </div>
-                    </a>
+                    </Link>
                 </motion.div>
             </motion.div>
         </section>

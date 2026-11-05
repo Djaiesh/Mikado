@@ -1,5 +1,8 @@
+"use client";
+
 import { Target, Users, LayoutDashboard, Dumbbell, Wallet } from "lucide-react";
 import Image from "next/image";
+import { ScrollItem } from "@/components/ui/ScrollReveal";
 
 export default function WhyChooseUsSection() {
     const reasons = [
@@ -38,7 +41,7 @@ export default function WhyChooseUsSection() {
                 <div className="relative w-full h-full lg:w-[60%] lg:h-[110%] -translate-x-1/4 lg:translate-x-0">
                     <Image
                         src="/assets/crossfit-woman.png"
-                        alt="Female Crossfit Athlete"
+                        alt="Female Athlete"
                         fill
                         className="object-cover object-top lg:object-center mix-blend-lighten"
                         style={{ filter: "contrast(1.1) brightness(0.9)" }}
@@ -76,27 +79,26 @@ export default function WhyChooseUsSection() {
                         {/* Glassmorphism Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
                             {reasons.map((reason, i) => (
-                                <div
-                                    key={i}
-                                    className="group relative p-8 rounded-[2rem] border border-white/10 bg-[#0A0A0A]/60 backdrop-blur-xl overflow-hidden hover:-translate-y-1 transition-all duration-500 shadow-2xl"
-                                >
-                                    {/* Glass reflection */}
-                                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    {/* Hover glow */}
-                                    <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-[#C8102E]/20 rounded-full blur-[40px] group-hover:bg-[#C8102E]/40 transition-colors duration-500 pointer-events-none" />
+                                <ScrollItem key={i} delay={i * 0.08} className="h-full">
+                                    <div className="group relative h-full p-8 rounded-[2rem] border border-white/10 bg-[#0A0A0A]/60 backdrop-blur-xl overflow-hidden hover:-translate-y-1 transition-all duration-500 shadow-2xl">
+                                        {/* Glass reflection */}
+                                        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                        {/* Hover glow */}
+                                        <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-[#C8102E]/20 rounded-full blur-[40px] group-hover:bg-[#C8102E]/40 transition-colors duration-500 pointer-events-none" />
 
-                                    <div className="relative z-10">
-                                        <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:bg-[#C8102E]/20 group-hover:border-[#C8102E]/30 transition-all duration-300">
-                                            {reason.icon}
+                                        <div className="relative z-10">
+                                            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:bg-[#C8102E]/20 group-hover:border-[#C8102E]/30 transition-all duration-300">
+                                                {reason.icon}
+                                            </div>
+                                            <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                                                {reason.title}
+                                            </h3>
+                                            <p className="text-white/60 leading-relaxed text-sm font-medium">
+                                                {reason.description}
+                                            </p>
                                         </div>
-                                        <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
-                                            {reason.title}
-                                        </h3>
-                                        <p className="text-white/60 leading-relaxed text-sm font-medium">
-                                            {reason.description}
-                                        </p>
                                     </div>
-                                </div>
+                                </ScrollItem>
                             ))}
                         </div>
                     </div>

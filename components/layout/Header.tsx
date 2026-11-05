@@ -71,15 +71,13 @@ export default function Header() {
 
                 {/* Join Now (Right) */}
                 <div className="flex justify-end">
-                    <a
-                        href={whatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-6 h-[40px] rounded-full bg-[#C8102E] hover:bg-[#a50d25] text-white text-[14px] font-bold tracking-wide transition-all duration-200 hover:scale-105 shadow-[0_8px_25px_rgba(200,16,46,0.4)] hover:shadow-[0_12px_35px_rgba(200,16,46,0.6)]"
+                    <Link
+                        href="/contact#contact-form"
+                        className="flex items-center justify-center gap-2 px-6 h-[40px] rounded-full bg-[#C8102E] hover:bg-[#a50d25] text-white text-[14px] font-bold tracking-wide transition-all duration-200 hover:scale-105 shadow-[0_8px_25px_rgba(200,16,46,0.4)] hover:shadow-[0_12px_35px_rgba(200,16,46,0.6)] cursor-pointer"
                     >
                         <MessageCircle size={16} />
                         Join Now
-                    </a>
+                    </Link>
                 </div>
             </motion.header>
 
@@ -98,14 +96,13 @@ export default function Header() {
                 </Link>
 
                 {/* Center Floating CTA */}
-                <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-13 h-13 rounded-full bg-[#C8102E] text-white shadow-lg shadow-red-500/30 transform -translate-y-3 border-[3px] border-black"
+                <Link
+                    href="/contact#contact-form"
+                    className="flex items-center justify-center w-13 h-13 rounded-full bg-[#C8102E] text-white shadow-lg shadow-red-500/30 transform -translate-y-3 border-[3px] border-black cursor-pointer"
+                    aria-label="Join Now / Contact Form"
                 >
                     <MessageCircle size={22} />
-                </a>
+                </Link>
 
                 <Link href="/memberships" className={`p-2.5 transition-colors ${pathname.startsWith("/memberships") ? "text-[#C8102E]" : "text-white/70 hover:text-white"}`}>
                     <Dumbbell size={22} />
